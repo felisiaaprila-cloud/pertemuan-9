@@ -1,5 +1,8 @@
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Header } from "./component/header"; // TAMBAHAN UNTUK HEADER
+import Button from "./component/button"; // TAMBAHAN UNTUK BUTTON
 import "./globals.css";
 
 const geistSans = Geist({
@@ -8,7 +11,7 @@ const geistSans = Geist({
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+  variable: "--fonr-geist-mono",
   subsets: ["latin"],
 });
 
@@ -19,11 +22,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body>
+        <Header /> {/* TAMBAHAN UNTUK HEADER */}
+        {children}
+        <Button label="Click Me" /> {/* Tambahan untuk button */}
+      </body>
     </html>
   );
 }
